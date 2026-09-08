@@ -34,18 +34,17 @@
   </nav>
 
   <main class="page">
-    <p class="eyebrow">Ça se précise</p>
+    <p class="eyebrow">Un mot</p>
     <h1 class="page-title">Le lieu</h1>
-    <p class="page-lede">Une image encore trouble. Elle devient un peu plus nette chaque jour.</p>
+    <p class="page-lede">Neuf lettres, encore floues. Elles se dévoilent le jour venu… ou avec le bon mot.</p>
 
-    <div class="place-stage">
-      <div class="place-map"></div>
-    </div>
+    <div class="letters-row" aria-label="Neuf lettres à révéler"></div>
 
-    <div class="place-meter">
-      <div class="place-meter-track"><div class="place-meter-fill"></div></div>
-    </div>
-    <p class="place-hint">Reviens de temps en temps.</p>
+    <form class="lieu-lock" autocomplete="off">
+      <input class="lieu-input" type="text" inputmode="text" placeholder="mot de passe" aria-label="Mot de passe">
+      <button type="submit">Révéler</button>
+    </form>
+    <p class="lieu-msg" hidden></p>
   </main>
 
   <script src="js/config.js"></script>
