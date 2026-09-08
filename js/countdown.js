@@ -90,10 +90,10 @@ function initPetals() {
       // Ambiance nuit étoilée : bleus/jaunes
       return pt.hue > 0.5 ? 'rgba(244,211,94,ALPHA)' : 'rgba(120,170,255,ALPHA)';
     }
-    // Palette normale : verts avec quelques touches orange
-    if (pt.hue > 0.78) return 'rgba(224,138,60,ALPHA)';   // orange discret
-    if (pt.hue > 0.5) return 'rgba(124,196,163,ALPHA)';   // vert clair
-    return 'rgba(46,139,98,ALPHA)';                        // vert
+    // Palette « carte » : corail, turquoise, vert
+    if (pt.hue > 0.66) return 'rgba(225,122,76,ALPHA)';    // corail
+    if (pt.hue > 0.33) return 'rgba(87,184,180,ALPHA)';    // turquoise
+    return 'rgba(90,160,110,ALPHA)';                        // vert (touche)
   }
 
   function draw() {

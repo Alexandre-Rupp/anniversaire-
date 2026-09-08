@@ -3,34 +3,41 @@
    Vert (couleur préférée) + clins d'œil orange, en subtilité.
    ========================================================= */
 :root {
-  /* Verts */
-  --green-900: #123a2b;
-  --green-700: #1f5a41;
-  --green-500: #2e8b62;
-  --green-300: #7cc4a3;
-  --green-100: #e6f2ec;
+  /* Ambiance « carte illustrée » : crème, turquoise, corail (vert en touche) */
+  --coral-500: #e17a4c;
+  --coral-300: #f0a87e;
+  --teal-500: #57b8b4;
+  --teal-300: #9ad6d2;
+  --teal-700: #2f7d7a;
 
-  /* Touches orange (clin d'œil discret) */
-  --orange-500: #e08a3c;
-  --orange-300: #f2b471;
+  /* Verts (touche « couleur préférée » + carte d'Europe) */
+  --green-900: #1c3f2e;
+  --green-700: #3c7a54;
+  --green-500: #5aa06e;
+  --green-300: #a8d3ad;
+  --green-100: #eaf1dc;
 
-  /* Neutres */
-  --bg: #f6faf7;
-  --surface: #ffffff;
-  --ink: #17251f;
-  --ink-soft: #4c5f56;
-  --line: #dde8e1;
+  /* Anciens noms « orange » réaffectés au corail (compat rétro) */
+  --orange-500: var(--coral-500);
+  --orange-300: var(--coral-300);
 
-  --accent: var(--green-500);
-  --accent-2: var(--orange-500);
+  /* Neutres chauds */
+  --bg: #f7ecd6;
+  --surface: #fdf7ea;
+  --ink: #274a4f;
+  --ink-soft: #66787b;
+  --line: #e7d5b3;
+
+  --accent: var(--coral-500);
+  --accent-2: var(--teal-500);
 
   --radius: 18px;
   --radius-sm: 12px;
-  --shadow: 0 10px 30px rgba(24, 60, 43, 0.10);
-  --shadow-soft: 0 4px 16px rgba(24, 60, 43, 0.08);
+  --shadow: 0 10px 30px rgba(70, 52, 28, 0.13);
+  --shadow-soft: 0 4px 16px rgba(70, 52, 28, 0.10);
 
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Shantell Sans', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --maxw: 1040px;
   color-scheme: light;
@@ -44,6 +51,10 @@
   --green-300: #c9a94b;
   --green-100: #16264f;
 
+  --coral-500: #ffcf3f;
+  --coral-300: #e8b93a;
+  --teal-500: #7aa2ff;
+  --teal-300: #4b6bd0;
   --orange-500: #ffcf3f;
   --orange-300: #e8b93a;
 
@@ -54,7 +65,7 @@
   --line: #24356b;
 
   --accent: #f4d35e;
-  --accent-2: #ffcf3f;
+  --accent-2: #7aa2ff;
 
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
   --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.35);
@@ -171,8 +182,24 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 
 .page-title {
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  margin: 0 0 8px;
+  font-size: clamp(2.1rem, 6.5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: .01em;
+  margin: 0 0 12px;
+  display: inline-block;
+  position: relative;
+}
+/* Soulignement dessiné « à la main » (clin d'œil au titre de la carte) */
+.page-title::after {
+  content: '';
+  display: block;
+  height: 9px;
+  margin-top: 3px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='9' viewBox='0 0 120 9'%3E%3Cpath d='M2 6 Q17 1 32 6 T62 6 T92 6 T120 5' fill='none' stroke='%23e17a4c' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center;
+  background-size: 120px 9px;
+}
+:root.vangogh .page-title::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='9' viewBox='0 0 120 9'%3E%3Cpath d='M2 6 Q17 1 32 6 T62 6 T92 6 T120 5' fill='none' stroke='%23f4d35e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 .page-lede {
   color: var(--ink-soft);
