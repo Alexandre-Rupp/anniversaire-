@@ -494,8 +494,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   content: '';
   position: absolute; inset: 15%;
   border-radius: 50%;
-  background: radial-gradient(circle at 38% 34%, #2a1e57 0%, #14122e 55%, #0a0a17 100%);
-  box-shadow: 0 0 60px rgba(120, 80, 220, 0.35), inset 0 0 42px rgba(150, 90, 255, 0.25);
+  background: radial-gradient(circle at 40% 36%, #241a48 0%, #120f2a 58%, #07060f 100%);
+  box-shadow: 0 0 60px rgba(150, 90, 255, 0.32), inset 0 0 46px rgba(178, 110, 255, 0.28);
 }
 
 /* =========================================================
