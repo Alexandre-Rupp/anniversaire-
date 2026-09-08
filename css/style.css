@@ -487,6 +487,19 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   margin: 8px auto 0;
   aspect-ratio: 1 / 1;
 }
+/* Page Carte : Terre en grand, plein cadre, sans texte */
+.globe-page {
+  min-height: calc(100vh - 66px);
+  display: grid;
+  place-items: center;
+  padding: clamp(6px, 2vh, 20px) clamp(6px, 3vw, 24px);
+  position: relative;
+  z-index: 2;
+}
+.globe-stage--big {
+  margin: 0 auto;
+  max-width: min(92vh, 96vw);
+}
 .globe-canvas { position: absolute; inset: 0; }
 .globe-canvas canvas { width: 100% !important; height: 100% !important; display: block; }
 /* Repli : disque lumineux si la 3D ne se charge pas */
