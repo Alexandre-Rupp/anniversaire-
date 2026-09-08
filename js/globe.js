@@ -11,7 +11,6 @@ const GLOBE_ORBIT_CDN = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/
 
 const EARTH_DAY = 'assets/earth/earth_atmos_2048.jpg';
 const EARTH_NIGHT = 'assets/earth/earth_lights_2048.png';
-const EARTH_CLOUDS = 'assets/earth/earth_clouds_1024.png';
 
 function gLoadScript(src) {
   return new Promise((res, rej) => {
@@ -53,9 +52,9 @@ async function initGlobe() {
   // Charge les textures
   const loader = new THREE.TextureLoader();
   const load = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));
-  let dayTex, nightTex, cloudTex;
+  let dayTex, nightTex;
   try {
-    [dayTex, nightTex, cloudTex] = await Promise.all([load(EARTH_DAY), load(EARTH_NIGHT), load(EARTH_CLOUDS)]);
+    [dayTex, nightTex] = await Promise.all([load(EARTH_DAY), load(EARTH_NIGHT)]);
   } catch (e) { return; } // textures indisponibles : on garde le repli
   dayTex.encoding = THREE.sRGBEncoding;
   nightTex.encoding = THREE.sRGBEncoding;
@@ -85,13 +84,6 @@ async function initGlobe() {
   const earth = new THREE.Mesh(new THREE.SphereGeometry(R, 64, 64), earthMat);
   earth.rotation.y = -1.2; // vue de départ (Europe/Afrique visibles)
   scene.add(earth);
-
-  // Nuages (éclairés par le soleil ; sombres côté nuit)
-  const clouds = new THREE.Mesh(
-    new THREE.SphereGeometry(R * 1.012, 64, 64),
-    new THREE.MeshPhongMaterial({ alphaMap: cloudTex, transparent: true, depthWrite: false, opacity: 0.85 })
-  );
-  earth.add(clouds); // suit la rotation de la Terre
 
   // Halo atmosphérique bleu (Fresnel, additif)
   const atm = new THREE.Mesh(
@@ -125,7 +117,6 @@ async function initGlobe() {
     requestAnimationFrame(animate);
     if (!reduce) {
       earth.rotation.y += 0.0006;      // rotation sur l'axe (terminateur qui défile)
-      clouds.rotation.y += 0.00025;    // nuages un peu plus rapides
     }
     controls.update();
     renderer.render(scene, camera);
