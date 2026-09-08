@@ -35,13 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.lieu-lock');
   const input = document.querySelector('.lieu-input');
   const msg = document.querySelector('.lieu-msg');
+  const toggle = document.querySelector('.lieu-toggle');
 
+  // Affiche (show=true) ou masque (show=false) les lettres, sans changer le
+  // déverrouillage : c'est un simple bouton montrer / cacher.
+  function setShown(show) {
+    cells.forEach((c) => c.classList.toggle('locked', !show));
+    row.classList.toggle('revealed', show);
+    if (toggle) toggle.textContent = show ? 'Cacher' : 'Montrer';
+  }
+
+  // Déverrouille : cache le formulaire et affiche le bouton montrer / cacher.
   function reveal(persist) {
-    cells.forEach((c) => c.classList.remove('locked'));
-    row.classList.add('revealed');
     if (persist) { try { localStorage.setItem(LIEU_KEY, '1'); } catch (e) {} }
     if (form) form.hidden = true;
     if (msg) msg.hidden = true;
+    if (toggle) toggle.hidden = false;
+    setShown(true);
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      setShown(!row.classList.contains('revealed'));
+    });
   }
 
   // État initial : déjà trouvé, ou date atteinte
