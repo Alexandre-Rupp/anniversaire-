@@ -21,6 +21,8 @@ const MASCOT = {
   bob: 6,                      // amplitude du petit flottement (unités modèle)
   playClips: true,             // jouer les animations intégrées au modèle
   dismissible: true,           // petit bouton pour masquer
+  // Orientation initiale du modèle (degrés) — ajuste si le perso est de dos/penché
+  faceX: 0, faceY: 0, faceZ: 0,
 };
 
 const THREE_CDN = 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js';
@@ -109,6 +111,8 @@ async function initMascot() {
       const maxDim = Math.max(size.x, size.y, size.z) || 1;
       const target = 60; // hauteur visée en unités scène
       pivot.scale.setScalar(target / maxDim);
+      const d2r = Math.PI / 180;
+      pivot.rotation.set(MASCOT.faceX * d2r, MASCOT.faceY * d2r, MASCOT.faceZ * d2r);
       pivot.add(model);
 
       if (MASCOT.playClips && gltf.animations && gltf.animations.length) {
