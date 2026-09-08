@@ -519,6 +519,14 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   color: var(--ink);
   font-size: clamp(1.02rem, 2.6vw, 1.18rem);
   line-height: 1.85;
+  /* Carte « verre teinté » (semi-transparente) pour faire ressortir le texte */
+  padding: clamp(20px, 4vw, 34px);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
 }
 .mots-text p { margin: 0 0 1em; }
 .mots-text .mots-sign {
