@@ -508,8 +508,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   content: '';
   position: absolute; inset: 15%;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 36%, #241a48 0%, #120f2a 58%, #07060f 100%);
-  box-shadow: 0 0 60px rgba(150, 90, 255, 0.32), inset 0 0 46px rgba(178, 110, 255, 0.28);
+  background: radial-gradient(circle at 38% 34%, #2b6bb0 0%, #123a63 55%, #06121f 100%);
+  box-shadow: 0 0 60px rgba(70, 130, 220, 0.3), inset 0 0 46px rgba(120, 180, 255, 0.25);
 }
 
 /* =========================================================
