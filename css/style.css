@@ -515,12 +515,17 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 .mots-text {
   max-width: 620px;
   margin: 0 auto;
+  text-align: left;
   color: var(--ink);
   font-size: clamp(1.02rem, 2.6vw, 1.18rem);
   line-height: 1.85;
-  white-space: pre-line;
 }
 .mots-text p { margin: 0 0 1em; }
+.mots-text .mots-sign {
+  margin-top: 1.4em;
+  color: var(--accent);
+  font-weight: 600;
+}
 
 /* =========================================================
    CARTE — carte du monde en pointillés
