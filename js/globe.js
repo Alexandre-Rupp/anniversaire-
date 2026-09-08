@@ -31,14 +31,14 @@ function makeGlobeTexture() {
   // terres — violet profond
   g.fillStyle = '#191038';
   g.fill(path);
-  // halo diffus des terres (glow large et doux)
-  g.shadowColor = 'rgba(138,80,240,0.9)'; g.shadowBlur = 16;
-  g.strokeStyle = 'rgba(120,66,210,0.55)'; g.lineWidth = 3.4;
+  // halo diffus des terres (glow large et doux, discret)
+  g.shadowColor = 'rgba(138,80,240,0.6)'; g.shadowBlur = 8;
+  g.strokeStyle = 'rgba(120,66,210,0.3)'; g.lineWidth = 2.8;
   g.lineJoin = 'round'; g.lineCap = 'round';
   g.stroke(path);
-  // côtes lumineuses (magenta / violet vif)
-  g.shadowColor = 'rgba(178,110,255,1)'; g.shadowBlur = 9;
-  g.strokeStyle = 'rgba(190,124,255,0.98)'; g.lineWidth = 2.2;
+  // côtes (violet, glow léger)
+  g.shadowColor = 'rgba(170,108,245,0.7)'; g.shadowBlur = 3.5;
+  g.strokeStyle = 'rgba(172,116,240,0.82)'; g.lineWidth = 1.8;
   g.stroke(path);
   g.shadowBlur = 0;
   // lumières de villes (points chauds, surtout côté nuit)
@@ -90,7 +90,7 @@ async function initGlobe() {
     new THREE.ShaderMaterial({
       transparent: true, blending: THREE.AdditiveBlending, side: THREE.BackSide, depthWrite: false,
       vertexShader: 'varying vec3 vN; void main(){ vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
-      fragmentShader: 'varying vec3 vN; void main(){ float i=pow(0.70 - dot(vN, vec3(0.0,0.0,1.0)), 3.2); i=clamp(i,0.0,1.0); gl_FragColor=vec4(0.36,0.30,0.86,1.0)*i; }',
+      fragmentShader: 'varying vec3 vN; void main(){ float i=pow(0.66 - dot(vN, vec3(0.0,0.0,1.0)), 4.2); i=clamp(i,0.0,1.0); gl_FragColor=vec4(0.30,0.26,0.72,1.0)*i*0.7; }',
     })
   );
   scene.add(atm);
@@ -102,7 +102,7 @@ async function initGlobe() {
   controls.rotateSpeed = 0.6;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   controls.autoRotate = !reduce;
-  controls.autoRotateSpeed = 0.6;
+  controls.autoRotateSpeed = 0.28;
   controls.minPolarAngle = 0.35; controls.maxPolarAngle = Math.PI - 0.35;
 
   function onResize() {
@@ -114,7 +114,7 @@ async function initGlobe() {
   function animate() {
     requestAnimationFrame(animate);
     if (!reduce) {
-      globe.rotation.y += 0.0013;
+      globe.rotation.y += 0.0007;
     }
     controls.update();
     renderer.render(scene, camera);
