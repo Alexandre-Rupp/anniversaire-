@@ -50,6 +50,12 @@ function markActiveNav() {
       a.setAttribute('aria-current', 'page');
     }
   });
+  // Si la barre défile (petits écrans), amène le lien courant dans le champ.
+  const active = document.querySelector('.nav-links a.is-active');
+  const wrap = document.querySelector('.nav-links');
+  if (active && wrap && wrap.scrollWidth > wrap.clientWidth) {
+    wrap.scrollLeft = active.offsetLeft - 12;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
