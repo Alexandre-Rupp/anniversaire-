@@ -39,6 +39,19 @@ Alternative en une commande depuis la racine du projet : `npx vercel`.
 Le site fonctionne aussi en ouvrant simplement `index.html` dans un navigateur,
 ou via `npx serve` en local.
 
+## Mode aperçu (cette branche)
+
+Cette branche `apercu-evolution` ajoute une barre en bas de l'écran pour
+**voyager dans le temps** et voir comment chaque page évolue, sans attendre les
+vraies dates :
+
+- Boutons **‹ / ›** (ou flèches gauche/droite du clavier) pour avancer/reculer.
+- 8 étapes : Lancement → chaque indice débloqué → la veille → Jour J.
+- L'étape choisie s'applique aux trois pages (décompte, carte, indices).
+
+C'est uniquement une prévisualisation : la branche `main` reste le vrai site,
+piloté par la date réelle, sans cette barre.
+
 ## Notes
 
 - Responsive pensé mobile d'abord.

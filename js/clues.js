@@ -118,7 +118,7 @@ const LOCK_ICON =
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.clue-grid');
   if (!grid) return;
-  const now = new Date();
+  const now = appNow();
 
   CLUES.forEach((clue) => {
     const unlocked = now >= clue.unlock;

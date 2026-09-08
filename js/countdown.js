@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function pad(n) { return String(n).padStart(2, '0'); }
 
   function tick() {
-    const now = new Date();
+    const now = appNow();
     let diff = Math.max(0, TARGET_DATE - now);
 
     const dayMs = 86400000;

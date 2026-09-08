@@ -20,8 +20,14 @@ const CLUES = [
   { id: 'c5', unlock: new Date(2026, 9, 13, 0, 0, 0) }, // mardi 13 oct. 2026
 ];
 
-// Renvoie un facteur d'avancement entre 0 (loin) et 1 (jour J), basé sur la date réelle.
-function computeProgress(now = new Date()) {
+// Date « courante » utilisée par tout le site : réelle, ou simulée en mode aperçu
+// (le sélecteur d'étapes pose window.__previewDate ; sinon on lit l'horloge réelle).
+function appNow() {
+  return (window.__previewDate instanceof Date) ? window.__previewDate : new Date();
+}
+
+// Renvoie un facteur d'avancement entre 0 (loin) et 1 (jour J).
+function computeProgress(now = appNow()) {
   const total = TARGET_DATE - PROGRESS_START;
   const done = now - PROGRESS_START;
   const p = done / total;
