@@ -498,7 +498,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 .globe-stage--big {
   margin: 0 auto;
-  max-width: min(92vh, 96vw);
+  max-width: min(72vh, 82vw);
 }
 .globe-canvas { position: absolute; inset: 0; }
 .globe-canvas canvas { width: 100% !important; height: 100% !important; display: block; }
