@@ -6,7 +6,9 @@
      - le bon mot de passe soit saisi.
    Aucune mention du mot en clair : ce sont les images qui parlent.
    ========================================================= */
-const LIEU_KEY = 'lieu-unlocked';
+// Remettre à zéro l'état « déverrouillé » de tous les navigateurs :
+// il suffit de changer le suffixe de version (ex. v2 -> v3).
+const LIEU_KEY = 'lieu-unlocked-v2';
 const LIEU_PASSWORD = 'saucisson';
 
 function lieuNow() { return (typeof appNow === 'function') ? appNow() : new Date(); }
