@@ -53,8 +53,10 @@ function markActiveNav() {
   // Si la barre défile (petits écrans), amène le lien courant dans le champ.
   const active = document.querySelector('.nav-links a.is-active');
   const wrap = document.querySelector('.nav-links');
-  if (active && wrap && wrap.scrollWidth > wrap.clientWidth) {
-    wrap.scrollLeft = active.offsetLeft - 12;
+  if (active && wrap && wrap.scrollWidth > wrap.clientWidth + 1) {
+    const a = active.getBoundingClientRect();
+    const w = wrap.getBoundingClientRect();
+    wrap.scrollLeft += (a.left - w.left) - 14;
   }
 }
 
