@@ -345,6 +345,77 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 
 /* =========================================================
+   COMPTE À REBOURS — plein cadre (accueil)
+   Typo « horloge de mission » : Orbitron, sobre, spatiale.
+   ========================================================= */
+.countdown-solo {
+  min-height: calc(100vh - 66px);
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 6vh, 60px) clamp(16px, 4vw, 40px);
+  position: relative;
+  z-index: 2;
+}
+.cd-solo { text-align: center; width: 100%; max-width: 960px; }
+.cd-kicker {
+  margin: 0 0 clamp(20px, 5vh, 42px);
+  text-transform: uppercase;
+  letter-spacing: .42em;
+  font-size: clamp(.7rem, 2.4vw, .92rem);
+  font-weight: 600;
+  color: var(--accent-2);
+  text-indent: .42em;
+}
+.cd-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(6px, 2vw, 22px);
+  flex-wrap: wrap;
+}
+.cd-cell { display: flex; flex-direction: column; align-items: center; min-width: clamp(64px, 18vw, 150px); }
+.cd-num {
+  font-family: 'Orbitron', 'Rajdhani', 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 15vw, 7rem);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+  text-shadow: 0 0 26px rgba(95, 199, 195, 0.22), 0 0 60px rgba(10, 14, 31, 0.6);
+}
+.cd-unit {
+  margin-top: clamp(8px, 1.6vh, 14px);
+  text-transform: uppercase;
+  letter-spacing: .26em;
+  font-size: clamp(.56rem, 2vw, .78rem);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.cd-sep {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 9vw, 4.2rem);
+  line-height: 1;
+  color: var(--accent);
+  opacity: .55;
+  align-self: flex-start;
+  margin-top: clamp(.2rem, 2vw, 1rem);
+}
+.cd-target {
+  margin: clamp(26px, 6vh, 48px) 0 0;
+  color: var(--ink-soft);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: clamp(.78rem, 2.4vw, .98rem);
+}
+@media (max-width: 560px) {
+  .cd-sep { display: none; }
+  .cd-row { gap: 14px 22px; }
+  .cd-cell { min-width: 40%; }
+}
+
+/* =========================================================
    CARTE
    ========================================================= */
 .map-stage {

@@ -10,7 +10,7 @@
   <script>try{if(localStorage.getItem('vg-theme')==='1')document.documentElement.classList.add('vangogh');}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Shantell+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Orbitron:wght@500;600;700;800&family=Shantell+Sans:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/stars.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232e8b62' d='M5 19c8 0 14-6 14-14 0 0-2-1-6-1C7 4 4 8 4 13c0 2 .5 3.5 1 5 2-4 5-6 9-7-3 2-6 4-9 8z'/%3E%3C/svg%3E">
@@ -34,36 +34,20 @@
     </button>
   </nav>
 
-  <main class="page">
-    <p class="eyebrow">Bientôt</p>
-    <h1 class="page-title">Compte à rebours</h1>
-    <p class="page-lede">Quelque chose approche, doucement. Il n’y a rien à faire — juste à laisser le temps s’écouler.</p>
-
-    <section class="countdown-hero">
-      <canvas class="petals" aria-hidden="true"></canvas>
-      <div class="hero-inner">
-        <div class="count-grid">
-          <div class="count-cell">
-            <div class="count-num" data-days>—</div>
-            <div class="count-label">Jours</div>
-          </div>
-          <div class="count-cell">
-            <div class="count-num" data-hours>—</div>
-            <div class="count-label">Heures</div>
-          </div>
-          <div class="count-cell">
-            <div class="count-num" data-mins>—</div>
-            <div class="count-label">Minutes</div>
-          </div>
-        </div>
-
-        <div class="progress-wrap">
-          <div class="progress-track"><div class="progress-fill"></div></div>
-        </div>
-
-        <p class="count-note">Le visuel s’anime un peu plus chaque jour.</p>
+  <main class="countdown-solo">
+    <div class="cd-solo">
+      <p class="cd-kicker">Compte à rebours</p>
+      <div class="cd-row">
+        <div class="cd-cell"><span class="cd-num" data-days>—</span><span class="cd-unit">jours</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-cell"><span class="cd-num" data-hours>—</span><span class="cd-unit">heures</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-cell"><span class="cd-num" data-mins>—</span><span class="cd-unit">minutes</span></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-cell"><span class="cd-num" data-secs>—</span><span class="cd-unit">secondes</span></div>
       </div>
-    </section>
+      <p class="cd-target">20 octobre 2026</p>
+    </div>
   </main>
 
   <script src="js/config.js"></script>
