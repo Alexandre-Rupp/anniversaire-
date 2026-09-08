@@ -25,6 +25,16 @@ function toggleVanGogh() {
   setVanGogh(!document.documentElement.classList.contains('vangogh'));
 }
 
+// Injecte le fond d'étoiles animées (parallax) une seule fois, derrière tout.
+function ensureStarsBg() {
+  if (document.querySelector('.stars-bg')) return;
+  const c = document.createElement('div');
+  c.className = 'container stars-bg';
+  c.setAttribute('aria-hidden', 'true');
+  c.innerHTML = '<div id="stars"></div><div id="stars2"></div><div id="stars3"></div>';
+  document.body.insertBefore(c, document.body.firstChild);
+}
+
 // Injecte la couche animée « Nuit étoilée » (tourbillons CSS) une seule fois.
 function ensureStarryLayer() {
   if (document.querySelector('.starry-layer')) return;
@@ -61,6 +71,7 @@ function markActiveNav() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  ensureStarsBg();
   ensureStarryLayer();
   markActiveNav();
 

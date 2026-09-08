@@ -3,44 +3,44 @@
    Vert (couleur préférée) + clins d'œil orange, en subtilité.
    ========================================================= */
 :root {
-  /* Ambiance « carte illustrée » : crème, turquoise, corail (vert en touche) */
-  --coral-500: #e17a4c;
-  --coral-300: #f0a87e;
-  --teal-500: #57b8b4;
-  --teal-300: #9ad6d2;
-  --teal-700: #2f7d7a;
+  /* Ambiance « espace » : fond étoilé sombre, texte clair, accents chauds */
+  --coral-500: #ef9264;
+  --coral-300: #f4b48f;
+  --teal-500: #5fc7c3;
+  --teal-300: #93dbd7;
+  --teal-700: #2f8f8c;
 
   /* Verts (touche « couleur préférée » + carte d'Europe) */
-  --green-900: #1c3f2e;
-  --green-700: #3c7a54;
-  --green-500: #5aa06e;
-  --green-300: #a8d3ad;
-  --green-100: #eaf1dc;
+  --green-900: #0e2018;
+  --green-700: #2f6a48;
+  --green-500: #62b07a;
+  --green-300: #7cc190;
+  --green-100: #16273c;   /* teinte sombre (fonds subtils) */
 
   /* Anciens noms « orange » réaffectés au corail (compat rétro) */
   --orange-500: var(--coral-500);
   --orange-300: var(--coral-300);
 
-  /* Neutres chauds */
-  --bg: #f7ecd6;
-  --surface: #fdf7ea;
-  --ink: #274a4f;
-  --ink-soft: #66787b;
-  --line: #e7d5b3;
+  /* Neutres sombres */
+  --bg: #0a0e1f;
+  --surface: #141d33;
+  --ink: #eaf1f9;
+  --ink-soft: #9db0c8;
+  --line: #29344f;
 
   --accent: var(--coral-500);
   --accent-2: var(--teal-500);
 
   --radius: 18px;
   --radius-sm: 12px;
-  --shadow: 0 10px 30px rgba(70, 52, 28, 0.13);
-  --shadow-soft: 0 4px 16px rgba(70, 52, 28, 0.10);
+  --shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.38);
 
   --font-display: 'Shantell Sans', 'Trebuchet MS', 'Segoe UI', sans-serif;
   --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --maxw: 1040px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 /* ===== Thème « Nuit étoilée » (easter egg Van Gogh) ===== */
