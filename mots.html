@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nous deux</title>
-  <meta name="description" content="Un petit tableau de bord, rien que nous.">
+  <title>Mots d’Alex</title>
+  <meta name="description" content="Quelques mots, rien que pour toi.">
   <meta name="theme-color" content="#0a0e1f">
   <script>try{if(localStorage.getItem('vg-theme')==='1')document.documentElement.classList.add('vangogh');}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,23 +34,21 @@
     </button>
   </nav>
 
-  <main class="page">
-    <p class="eyebrow">Petit tableau de bord</p>
-    <h1 class="page-title">Nous deux</h1>
-    <p class="page-lede">Quelques chiffres qui ne veulent rien dire pour les autres, et tout dire pour nous.</p>
+  <main class="page mots-page">
+    <p class="eyebrow">Rien que pour toi</p>
+    <h1 class="page-title">Mots d’Alex</h1>
 
-    <section class="dash-hero">
-      <div class="dash-hero-num">—</div>
-      <div class="dash-hero-label">jours ensemble</div>
-      <div class="dash-hero-sub"></div>
-    </section>
+    <figure class="mots-photo">
+      <img src="assets/alex.jpg" alt="" onerror="this.closest('.mots-photo').classList.add('empty')">
+    </figure>
 
-    <div class="dash"></div>
+    <div class="mots-text">
+      <p>Quelques mots, bientôt, rien que pour toi.</p>
+    </div>
   </main>
 
   <script src="js/config.js"></script>
   <script src="js/theme.js"></script>
-  <script src="js/dashboard.js"></script>
   <script src="js/mascot.js"></script>
 </body>
 </html>
