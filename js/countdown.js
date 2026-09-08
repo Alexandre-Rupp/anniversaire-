@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const elDays = document.querySelector('[data-days]');
   const elHours = document.querySelector('[data-hours]');
   const elMins = document.querySelector('[data-mins]');
+  const elSecs = document.querySelector('[data-secs]');
   const fill = document.querySelector('.progress-fill');
   const note = document.querySelector('.count-note');
 
@@ -21,11 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const dayMs = 86400000;
     const days = Math.floor(diff / dayMs); diff -= days * dayMs;
     const hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
-    const mins = Math.floor(diff / 60000);
+    const mins = Math.floor(diff / 60000); diff -= mins * 60000;
+    const secs = Math.floor(diff / 1000);
 
-    if (elDays) elDays.textContent = days;
+    if (elDays) elDays.textContent = pad(days);
     if (elHours) elHours.textContent = pad(hours);
     if (elMins) elMins.textContent = pad(mins);
+    if (elSecs) elSecs.textContent = pad(secs);
 
     const p = computeProgress(now);
     if (fill) fill.style.width = (p * 100).toFixed(1) + '%';
