@@ -58,14 +58,14 @@
   --orange-500: #ffcf3f;
   --orange-300: #e8b93a;
 
-  --bg: #0a1533;
-  --surface: #10204a;
-  --ink: #f3ecd0;
-  --ink-soft: #b9c4e6;
-  --line: #24356b;
+  --bg: #0a1a48;          /* nuit cobalt profonde (le ciel du tableau) */
+  --surface: #143073;     /* bleu outremer */
+  --ink: #f4ecce;         /* crème / jaune pâle */
+  --ink-soft: #b9c8ea;
+  --line: #2a4488;
 
-  --accent: #f4d35e;
-  --accent-2: #7aa2ff;
+  --accent: #f2ce46;      /* jaune étoilé */
+  --accent-2: #7aa6e8;    /* bleu ciel des tourbillons */
 
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
   --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.35);
@@ -221,58 +221,115 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   opacity: 0;
   transition: opacity .8s ease;
   overflow: hidden;
+  /* Ciel de nuit cobalt, dégradé comme le tableau (plus clair vers la lune) */
+  background:
+    radial-gradient(130% 100% at 82% 16%, rgba(70,120,200,.5), transparent 55%),
+    linear-gradient(180deg, #0a1a4c 0%, #143173 46%, #0b1f56 100%);
 }
 :root.vangogh .starry-layer { opacity: 1; }
+/* En Nuit étoilée, le fond d'étoiles « espace » s'efface au profit des tourbillons. */
+:root.vangogh .stars-bg { opacity: 0; }
+
+/* Bandes « coups de pinceau » qui ondulent lentement */
+.starry-layer .sky-flow {
+  position: absolute; inset: -12%;
+  background:
+    repeating-linear-gradient(92deg,
+      transparent 0 34px,
+      rgba(150,190,245,.035) 34px 46px,
+      transparent 46px 80px);
+  filter: blur(7px);
+  mix-blend-mode: screen;
+  animation: flow 44s linear infinite;
+}
 
 .starry-layer .swirl {
   position: absolute;
   border-radius: 50%;
   mix-blend-mode: screen;
-  filter: blur(6px);
-  opacity: .55;
+  filter: blur(8px);
+  opacity: .5;
 }
+/* Grand tourbillon central (le vortex signature du tableau) */
 .swirl-a {
-  width: 90vmax; height: 90vmax;
-  left: -20vmax; top: -30vmax;
+  width: 78vmax; height: 78vmax;
+  left: 6vmax; top: -8vmax;
   background:
-    conic-gradient(from 0deg,
-      transparent 0deg, rgba(120,170,255,.55) 60deg,
-      transparent 130deg, rgba(244,211,94,.5) 200deg,
-      transparent 270deg, rgba(90,140,255,.5) 330deg, transparent 360deg);
-  animation: spin 42s linear infinite;
+    conic-gradient(from 20deg,
+      transparent 0deg, rgba(122,166,232,.62) 45deg,
+      rgba(195,220,252,.5) 92deg, transparent 155deg,
+      rgba(122,166,232,.5) 250deg, transparent 322deg);
+  -webkit-mask: radial-gradient(closest-side, transparent 22%, #000 34%, #000 60%, transparent 80%);
+          mask: radial-gradient(closest-side, transparent 22%, #000 34%, #000 60%, transparent 80%);
+  animation: spin 64s linear infinite;
 }
+/* Second tourbillon, sens inverse, imbriqué */
 .swirl-b {
-  width: 70vmax; height: 70vmax;
-  right: -25vmax; bottom: -25vmax;
+  width: 52vmax; height: 52vmax;
+  left: 24vmax; top: 6vmax;
   background:
-    conic-gradient(from 90deg,
-      transparent 0deg, rgba(255,207,63,.5) 70deg,
-      transparent 150deg, rgba(80,130,240,.5) 230deg, transparent 320deg);
-  animation: spin 58s linear infinite reverse;
+    conic-gradient(from 160deg,
+      transparent 0deg, rgba(210,230,255,.5) 60deg,
+      transparent 150deg, rgba(122,166,232,.5) 262deg, transparent 342deg);
+  -webkit-mask: radial-gradient(closest-side, transparent 26%, #000 40%, transparent 78%);
+          mask: radial-gradient(closest-side, transparent 26%, #000 40%, transparent 78%);
+  animation: spin 48s linear infinite reverse;
 }
+/* Remous secondaire, en bas à droite */
 .swirl-c {
-  width: 55vmax; height: 55vmax;
-  left: 30vmax; top: 20vmax;
+  width: 46vmax; height: 46vmax;
+  right: -12vmax; bottom: -14vmax;
   background:
-    radial-gradient(circle at 40% 40%, rgba(244,211,94,.35), transparent 60%),
-    conic-gradient(from 200deg, transparent, rgba(120,170,255,.4), transparent 180deg);
-  animation: spin 34s linear infinite;
+    conic-gradient(from 200deg, transparent, rgba(122,166,232,.46), transparent 172deg);
+  -webkit-mask: radial-gradient(closest-side, transparent 30%, #000 46%, transparent 82%);
+          mask: radial-gradient(closest-side, transparent 30%, #000 46%, transparent 82%);
+  animation: spin 54s linear infinite;
 }
+
+/* Lune-croissant dorée, en haut à droite */
+.starry-layer .moon {
+  position: absolute;
+  top: 7vh; right: 7vw;
+  width: clamp(62px, 8vw, 104px); aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #ffe98a 0%, #f5c23a 58%, #e0a520 80%);
+  box-shadow: 0 0 40px 12px rgba(245,205,70,.4), 0 0 120px 40px rgba(245,205,70,.16);
+  -webkit-mask: radial-gradient(circle at 72% 36%, transparent 0 46%, #000 48%);
+          mask: radial-gradient(circle at 72% 36%, transparent 0 46%, #000 48%);
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+
+/* Grosses étoiles à halo doré (comme dans le tableau) */
+.starry-layer .halos {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle 34px at 16% 24%, rgba(255,230,130,.55), rgba(255,220,110,.14) 42%, transparent 64%),
+    radial-gradient(circle 26px at 33% 13%, rgba(255,230,130,.5), transparent 60%),
+    radial-gradient(circle 30px at 61% 19%, rgba(255,230,130,.5), transparent 62%),
+    radial-gradient(circle 22px at 47% 33%, rgba(255,230,130,.45), transparent 60%),
+    radial-gradient(circle 26px at 9% 52%, rgba(255,230,130,.45), transparent 60%),
+    radial-gradient(circle 20px at 40% 60%, rgba(255,230,130,.42), transparent 60%),
+    radial-gradient(circle 22px at 73% 47%, rgba(255,230,130,.42), transparent 60%);
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+/* Cœurs brillants des étoiles */
 .starry-layer .stars {
   position: absolute; inset: 0;
   background-image:
-    radial-gradient(1.6px 1.6px at 20% 30%, rgba(255,247,214,.9), transparent),
-    radial-gradient(1.4px 1.4px at 70% 20%, rgba(255,247,214,.8), transparent),
-    radial-gradient(1.8px 1.8px at 40% 70%, rgba(255,247,214,.85), transparent),
-    radial-gradient(1.3px 1.3px at 85% 60%, rgba(255,247,214,.75), transparent),
-    radial-gradient(1.5px 1.5px at 55% 45%, rgba(255,247,214,.8), transparent),
-    radial-gradient(1.2px 1.2px at 10% 80%, rgba(255,247,214,.7), transparent),
-    radial-gradient(1.6px 1.6px at 90% 85%, rgba(255,247,214,.8), transparent);
+    radial-gradient(2px 2px at 16% 24%, #fff6d6, transparent),
+    radial-gradient(2px 2px at 33% 13%, #fff6d6, transparent),
+    radial-gradient(2px 2px at 61% 19%, #fff6d6, transparent),
+    radial-gradient(1.6px 1.6px at 47% 33%, #fff6d6, transparent),
+    radial-gradient(1.6px 1.6px at 9% 52%, #fff6d6, transparent),
+    radial-gradient(1.6px 1.6px at 40% 60%, #fff6d6, transparent),
+    radial-gradient(1.6px 1.6px at 73% 47%, #fff6d6, transparent),
+    radial-gradient(1.4px 1.4px at 86% 66%, #fff6d6, transparent);
   animation: twinkle 6s ease-in-out infinite alternate;
 }
 
 @keyframes spin { to { transform: rotate(360deg); } }
-@keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+@keyframes twinkle { from { opacity: .6; } to { opacity: 1; } }
+@keyframes flow { to { transform: translateX(-54px); } }
 
 /* =========================================================
    COMPTE À REBOURS
@@ -889,7 +946,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
    Réduaction de mouvement
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .swirl, .stars { animation: none !important; }
+  .swirl, .stars, .halos, .moon, .sky-flow { animation: none !important; }
   .clue-card.unlocked .art { animation: none !important; }
   .progress-fill { transition: none; }
 }

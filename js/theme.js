@@ -41,11 +41,15 @@ function ensureStarryLayer() {
   const layer = document.createElement('div');
   layer.className = 'starry-layer';
   layer.setAttribute('aria-hidden', 'true');
-  // Tourbillons composés de plusieurs voiles en rotation + points d'étoiles.
+  // « Nuit étoilée » : bandes ondulantes, tourbillons, lune-croissant,
+  // étoiles à halo doré et leurs cœurs brillants.
   layer.innerHTML =
+    '<div class="sky-flow"></div>' +
     '<div class="swirl swirl-a"></div>' +
     '<div class="swirl swirl-b"></div>' +
     '<div class="swirl swirl-c"></div>' +
+    '<div class="moon"></div>' +
+    '<div class="halos"></div>' +
     '<div class="stars"></div>';
   document.body.appendChild(layer);
 }
