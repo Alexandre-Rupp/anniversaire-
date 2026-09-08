@@ -489,6 +489,99 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 
 /* =========================================================
+   NOUS DEUX (tableau de bord)
+   ========================================================= */
+.dash-hero {
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 5vw, 44px);
+  text-align: center;
+}
+.dash-hero .dash-hero-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 12vw, 5rem);
+  line-height: 1;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.dash-hero .dash-hero-label {
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .74rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+.dash-hero .dash-hero-sub { color: var(--ink-soft); margin-top: 12px; font-size: .98rem; }
+
+.dash-section { margin-top: 36px; }
+.dash-section > h2 {
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.dash-section > h2 .sec-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent);
+}
+.dash-section > .sec-lede { color: var(--ink-soft); font-size: .9rem; margin: 0 0 16px; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: clamp(12px, 2.5vw, 18px);
+}
+.stat-tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 118px;
+  justify-content: space-between;
+}
+.stat-tile .stat-icon { width: 22px; height: 22px; color: var(--accent); }
+.stat-tile .stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 6vw, 2.3rem);
+  line-height: 1;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.stat-tile .stat-value.accent { color: var(--accent); }
+.stat-tile .stat-label {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .66rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.stat-tile.text .stat-value { font-size: 1.25rem; line-height: 1.2; }
+.stat-tile.span2 { grid-column: span 2; }
+
+.donut-card {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.donut-card svg { width: 118px; height: 118px; flex: none; }
+.donut-legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.donut-legend li { display: flex; align-items: center; gap: 8px; font-size: .86rem; color: var(--ink-soft); }
+.donut-legend .dot { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.donut-legend b { color: var(--ink); font-weight: 600; }
+
+/* =========================================================
    Réduaction de mouvement
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
