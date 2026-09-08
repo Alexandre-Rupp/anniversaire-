@@ -22,26 +22,32 @@ function makeGlobeTexture() {
   const c = document.createElement('canvas');
   c.width = WORLD_W; c.height = WORLD_H;
   const g = c.getContext('2d');
-  // océan
+  // océan (quasi noir, très légère nuance bleu nuit)
   const grad = g.createLinearGradient(0, 0, 0, WORLD_H);
-  grad.addColorStop(0, '#0b0b1c'); grad.addColorStop(0.5, '#0a0a17'); grad.addColorStop(1, '#0b0b1c');
+  grad.addColorStop(0, '#060610'); grad.addColorStop(0.5, '#08081a'); grad.addColorStop(1, '#060610');
   g.fillStyle = grad; g.fillRect(0, 0, WORLD_W, WORLD_H);
 
   const path = new Path2D(WORLD_PATH);
-  // terres
-  g.fillStyle = '#221847';
+  // terres — violet profond
+  g.fillStyle = '#191038';
   g.fill(path);
-  // côtes lumineuses (violet)
+  // halo diffus des terres (glow large et doux)
+  g.shadowColor = 'rgba(138,80,240,0.9)'; g.shadowBlur = 16;
+  g.strokeStyle = 'rgba(120,66,210,0.55)'; g.lineWidth = 3.4;
   g.lineJoin = 'round'; g.lineCap = 'round';
-  g.shadowColor = 'rgba(150,90,255,0.95)'; g.shadowBlur = 7;
-  g.strokeStyle = 'rgba(163,104,255,0.95)'; g.lineWidth = 2.4;
+  g.stroke(path);
+  // côtes lumineuses (magenta / violet vif)
+  g.shadowColor = 'rgba(178,110,255,1)'; g.shadowBlur = 9;
+  g.strokeStyle = 'rgba(190,124,255,0.98)'; g.lineWidth = 2.2;
   g.stroke(path);
   g.shadowBlur = 0;
-  // lumières de villes (points dans les terres)
-  g.fillStyle = 'rgba(255,206,138,0.9)';
-  for (let i = 0; i < 1600; i++) {
+  // lumières de villes (points chauds, surtout côté nuit)
+  for (let i = 0; i < 1500; i++) {
     const x = Math.random() * WORLD_W, y = Math.random() * WORLD_H;
-    if (g.isPointInPath(path, x, y)) g.fillRect(x, y, 1.3, 1.3);
+    if (g.isPointInPath(path, x, y)) {
+      g.fillStyle = Math.random() < 0.25 ? 'rgba(255,150,90,0.9)' : 'rgba(255,200,130,0.85)';
+      g.fillRect(x, y, 1.2, 1.2);
+    }
   }
   const tex = new THREE.CanvasTexture(c);
   tex.anisotropy = 4;
@@ -84,25 +90,10 @@ async function initGlobe() {
     new THREE.ShaderMaterial({
       transparent: true, blending: THREE.AdditiveBlending, side: THREE.BackSide, depthWrite: false,
       vertexShader: 'varying vec3 vN; void main(){ vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
-      fragmentShader: 'varying vec3 vN; void main(){ float i=pow(0.72 - dot(vN, vec3(0.0,0.0,1.0)), 3.0); i=clamp(i,0.0,1.0); gl_FragColor=vec4(0.42,0.32,0.95,1.0)*i; }',
+      fragmentShader: 'varying vec3 vN; void main(){ float i=pow(0.70 - dot(vN, vec3(0.0,0.0,1.0)), 3.2); i=clamp(i,0.0,1.0); gl_FragColor=vec4(0.36,0.30,0.86,1.0)*i; }',
     })
   );
   scene.add(atm);
-
-  // Anneaux orbitaux (fins, crème)
-  const rings = new THREE.Group();
-  function ring(rad, rx, ry, rz, op) {
-    const m = new THREE.Mesh(
-      new THREE.TorusGeometry(rad, 0.006, 8, 220),
-      new THREE.MeshBasicMaterial({ color: 0xe9e6d6, transparent: true, opacity: op })
-    );
-    m.rotation.set(rx, ry, rz);
-    return m;
-  }
-  rings.add(ring(R * 1.55, 1.15, 0.2, 0.3, 0.75));
-  rings.add(ring(R * 1.7, -0.5, 0.9, 1.1, 0.55));
-  rings.add(ring(R * 1.42, 1.9, 0.4, -0.4, 0.5));
-  scene.add(rings);
 
   // Contrôles : rotation auto + manipulable
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -123,9 +114,7 @@ async function initGlobe() {
   function animate() {
     requestAnimationFrame(animate);
     if (!reduce) {
-      globe.rotation.y += 0.0015;
-      rings.rotation.y += 0.0018;
-      rings.rotation.x += 0.0006;
+      globe.rotation.y += 0.0013;
     }
     controls.update();
     renderer.render(scene, camera);
