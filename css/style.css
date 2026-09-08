@@ -173,13 +173,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   z-index: 2;
 }
 
+/* Petit intitulé orange au-dessus des titres : retiré à la demande. */
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  font-size: .72rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin: 0 0 10px;
+  display: none;
 }
 
 .page-title {
@@ -189,18 +185,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   margin: 0 0 12px;
   display: inline-block;
   position: relative;
-}
-/* Soulignement dessiné « à la main » (clin d'œil au titre de la carte) */
-.page-title::after {
-  content: '';
-  display: block;
-  height: 9px;
-  margin-top: 3px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='9' viewBox='0 0 120 9'%3E%3Cpath d='M2 6 Q17 1 32 6 T62 6 T92 6 T120 5' fill='none' stroke='%23e17a4c' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center;
-  background-size: 120px 9px;
-}
-:root.vangogh .page-title::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='9' viewBox='0 0 120 9'%3E%3Cpath d='M2 6 Q17 1 32 6 T62 6 T92 6 T120 5' fill='none' stroke='%23f4d35e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 .page-lede {
   color: var(--ink-soft);
