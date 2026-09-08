@@ -485,13 +485,13 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   min-height: calc(100vh - 66px);
   display: grid;
   place-items: center;
-  padding: clamp(10px, 3vh, 30px) clamp(10px, 4vw, 32px);
+  padding: clamp(6px, 2vh, 16px) clamp(6px, 2vw, 18px);
   position: relative;
   z-index: 2;
 }
 .worldmap {
   width: 100%;
-  max-width: 1000px;
+  max-width: min(98vw, 1360px);
   aspect-ratio: 2.35 / 1;
 }
 .worldmap canvas { display: block; }
