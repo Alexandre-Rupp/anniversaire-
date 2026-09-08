@@ -1,0 +1,456 @@
+/* =========================================================
+   Palette & fondations
+   Vert (couleur préférée) + clins d'œil orange, en subtilité.
+   ========================================================= */
+:root {
+  /* Verts */
+  --green-900: #123a2b;
+  --green-700: #1f5a41;
+  --green-500: #2e8b62;
+  --green-300: #7cc4a3;
+  --green-100: #e6f2ec;
+
+  /* Touches orange (clin d'œil discret) */
+  --orange-500: #e08a3c;
+  --orange-300: #f2b471;
+
+  /* Neutres */
+  --bg: #f6faf7;
+  --surface: #ffffff;
+  --ink: #17251f;
+  --ink-soft: #4c5f56;
+  --line: #dde8e1;
+
+  --accent: var(--green-500);
+  --accent-2: var(--orange-500);
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 10px 30px rgba(24, 60, 43, 0.10);
+  --shadow-soft: 0 4px 16px rgba(24, 60, 43, 0.08);
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --maxw: 1040px;
+  color-scheme: light;
+}
+
+/* ===== Thème « Nuit étoilée » (easter egg Van Gogh) ===== */
+:root.vangogh {
+  --green-900: #050b1f;
+  --green-700: #10204a;
+  --green-500: #f4d35e;   /* le jaune étoilé devient l'accent */
+  --green-300: #c9a94b;
+  --green-100: #16264f;
+
+  --orange-500: #ffcf3f;
+  --orange-300: #e8b93a;
+
+  --bg: #0a1533;
+  --surface: #10204a;
+  --ink: #f3ecd0;
+  --ink-soft: #b9c4e6;
+  --line: #24356b;
+
+  --accent: #f4d35e;
+  --accent-2: #ffcf3f;
+
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .5s ease, color .5s ease;
+}
+
+a { color: inherit; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; }
+
+/* =========================================================
+   Navigation (partagée)
+   ========================================================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: var(--ink);
+  letter-spacing: .01em;
+}
+.brand .leaf { width: 22px; height: 22px; color: var(--accent); }
+
+.nav-spacer { flex: 1; }
+
+.nav-links {
+  display: flex;
+  gap: clamp(6px, 2vw, 22px);
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: .92rem;
+  font-weight: 500;
+  padding: 7px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: color .25s ease, background-color .25s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.is-active {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* Bouton pinceau (easter egg) — discret */
+.brush-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform .25s ease, color .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.brush-btn:hover { color: var(--accent); transform: translateY(-1px); border-color: var(--accent); }
+.brush-btn svg { width: 19px; height: 19px; }
+:root.vangogh .brush-btn { color: var(--accent); border-color: var(--accent); }
+
+/* =========================================================
+   Mise en page générale
+   ========================================================= */
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 40px) 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.page-title {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin: 0 0 8px;
+}
+.page-lede {
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: 0 0 28px;
+  font-size: 1.02rem;
+}
+
+/* =========================================================
+   Couche « Nuit étoilée » — tourbillons animés (Van Gogh)
+   Cachée par défaut, révélée seulement quand .vangogh est actif.
+   ========================================================= */
+.starry-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .8s ease;
+  overflow: hidden;
+}
+:root.vangogh .starry-layer { opacity: 1; }
+
+.starry-layer .swirl {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  opacity: .55;
+}
+.swirl-a {
+  width: 90vmax; height: 90vmax;
+  left: -20vmax; top: -30vmax;
+  background:
+    conic-gradient(from 0deg,
+      transparent 0deg, rgba(120,170,255,.55) 60deg,
+      transparent 130deg, rgba(244,211,94,.5) 200deg,
+      transparent 270deg, rgba(90,140,255,.5) 330deg, transparent 360deg);
+  animation: spin 42s linear infinite;
+}
+.swirl-b {
+  width: 70vmax; height: 70vmax;
+  right: -25vmax; bottom: -25vmax;
+  background:
+    conic-gradient(from 90deg,
+      transparent 0deg, rgba(255,207,63,.5) 70deg,
+      transparent 150deg, rgba(80,130,240,.5) 230deg, transparent 320deg);
+  animation: spin 58s linear infinite reverse;
+}
+.swirl-c {
+  width: 55vmax; height: 55vmax;
+  left: 30vmax; top: 20vmax;
+  background:
+    radial-gradient(circle at 40% 40%, rgba(244,211,94,.35), transparent 60%),
+    conic-gradient(from 200deg, transparent, rgba(120,170,255,.4), transparent 180deg);
+  animation: spin 34s linear infinite;
+}
+.starry-layer .stars {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1.6px 1.6px at 20% 30%, rgba(255,247,214,.9), transparent),
+    radial-gradient(1.4px 1.4px at 70% 20%, rgba(255,247,214,.8), transparent),
+    radial-gradient(1.8px 1.8px at 40% 70%, rgba(255,247,214,.85), transparent),
+    radial-gradient(1.3px 1.3px at 85% 60%, rgba(255,247,214,.75), transparent),
+    radial-gradient(1.5px 1.5px at 55% 45%, rgba(255,247,214,.8), transparent),
+    radial-gradient(1.2px 1.2px at 10% 80%, rgba(255,247,214,.7), transparent),
+    radial-gradient(1.6px 1.6px at 90% 85%, rgba(255,247,214,.8), transparent);
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+
+/* =========================================================
+   COMPTE À REBOURS
+   ========================================================= */
+.countdown-hero {
+  position: relative;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: clamp(28px, 6vw, 64px) clamp(20px, 5vw, 56px);
+}
+.countdown-hero canvas.petals {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.countdown-hero .hero-inner { position: relative; z-index: 1; }
+
+.count-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 3vw, 26px);
+  margin-top: 22px;
+}
+.count-cell {
+  text-align: center;
+  padding: clamp(14px, 3vw, 26px) 8px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--green-100) 60%, var(--surface));
+  border: 1px solid var(--line);
+}
+.count-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 11vw, 5rem);
+  line-height: 1;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+.count-label {
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.count-note {
+  margin-top: 26px;
+  color: var(--ink-soft);
+  font-size: .95rem;
+}
+/* Barre d'avancement discrète qui se remplit à l'approche */
+.progress-wrap { margin-top: 20px; }
+.progress-track {
+  height: 8px; border-radius: 999px;
+  background: color-mix(in srgb, var(--green-100) 70%, var(--surface));
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green-500), var(--orange-300));
+  transition: width 1.2s ease;
+}
+
+/* =========================================================
+   CARTE
+   ========================================================= */
+.map-stage {
+  position: relative;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--green-100) 70%, var(--surface)), var(--surface));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: clamp(10px, 3vw, 26px);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+:root.vangogh .map-stage { background: color-mix(in srgb, var(--surface) 70%, transparent); }
+
+.map-svg { width: 100%; height: auto; display: block; }
+.map-group { transition: transform 1.2s ease; transform-origin: 512px 360px; }
+
+.country {
+  fill: var(--green-300);
+  stroke: var(--surface);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  transition: fill .18s ease, transform .18s ease;
+  cursor: pointer;
+}
+.map-stage.sea { }
+/* Quand la carte est « armée » (survol/tap) : tout rouge sauf la cible verte */
+.map-stage.armed .country { fill: #d7534b; }
+.map-stage.armed .country.is-green { fill: #2fb271; }
+
+.country:hover { transform: translateY(-1px); }
+
+/* Message taquin */
+.tease {
+  position: absolute;
+  left: 50%; bottom: 18px;
+  transform: translate(-50%, 140%);
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: .95rem;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transition: transform .4s cubic-bezier(.2,.9,.3,1.2), opacity .4s ease;
+  max-width: 90%;
+  text-align: center;
+  z-index: 5;
+}
+.tease.show { transform: translate(-50%, 0); opacity: 1; }
+:root.vangogh .tease { background: var(--accent); color: #10204a; }
+
+.map-hint {
+  margin-top: 16px;
+  color: var(--ink-soft);
+  font-size: .92rem;
+  text-align: center;
+}
+
+/* =========================================================
+   INDICES
+   ========================================================= */
+.clue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: clamp(14px, 3vw, 22px);
+  margin-top: 8px;
+}
+.clue-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  overflow: hidden;
+}
+.clue-card .art { width: 78%; height: 78%; }
+.clue-card .art svg { width: 100%; height: 100%; display: block; }
+
+/* Indice débloqué : révélation douce (l'unique animation marquante ici) */
+.clue-card.unlocked .art {
+  animation: clue-reveal .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes clue-reveal {
+  0%   { opacity: 0; transform: scale(.7) rotate(-6deg); filter: blur(6px); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+
+/* Indice verrouillé : grisé + flouté + date visible */
+.clue-card.locked { background: color-mix(in srgb, var(--green-100) 55%, var(--surface)); }
+.clue-card.locked .art { filter: grayscale(1) blur(7px) opacity(.35); }
+.clue-card .lock-overlay {
+  position: absolute; inset: 0;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.clue-card.unlocked .lock-overlay { display: none; }
+.lock-overlay .lock-icon { width: 26px; height: 26px; opacity: .8; }
+.lock-overlay .lock-date {
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--ink);
+  background: var(--surface);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+.lock-overlay .lock-sub {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+
+/* =========================================================
+   Réduaction de mouvement
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .swirl, .stars { animation: none !important; }
+  .clue-card.unlocked .art { animation: none !important; }
+  .progress-fill { transition: none; }
+}
+
+/* =========================================================
+   Petits écrans
+   ========================================================= */
+@media (max-width: 560px) {
+  .brand span.brand-text { display: none; }
+  .nav { gap: 8px; }
+  .nav-links a { padding: 6px 8px; font-size: .86rem; }
+}

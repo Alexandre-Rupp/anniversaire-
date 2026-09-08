@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Indices</title>
+  <meta name="description" content="Des indices qui se dévoilent avec le temps.">
+  <meta name="theme-color" content="#2e8b62">
+  <script>try{if(localStorage.getItem('vg-theme')==='1')document.documentElement.classList.add('vangogh');}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232e8b62' d='M5 19c8 0 14-6 14-14 0 0-2-1-6-1C7 4 4 8 4 13c0 2 .5 3.5 1 5 2-4 5-6 9-7-3 2-6 4-9 8z'/%3E%3C/svg%3E">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <svg class="leaf" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 19c8 0 14-6 14-14 0 0-2-1-6-1C7 4 4 8 4 13c0 2 .5 3.5 1 5 2-4 5-6 9-7-3 2-6 4-9 8z"/></svg>
+      <span class="brand-text">20 octobre</span>
+    </a>
+    <span class="nav-spacer"></span>
+    <div class="nav-links">
+      <a href="index.html">Compte à rebours</a>
+      <a href="carte.html">Carte</a>
+      <a href="indices.html">Indices</a>
+    </div>
+    <button class="brush-btn" type="button" aria-label="Changer d’ambiance">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.4 3.6a2.1 2.1 0 0 1 3 3L9 19l-4 1 1-4Z"/><path d="M15 6l3 3"/></svg>
+    </button>
+  </nav>
+
+  <main class="page">
+    <p class="eyebrow">Un par semaine</p>
+    <h1 class="page-title">Les indices</h1>
+    <p class="page-lede">Chaque mardi, un nouvel indice se dévoile. À toi de relier les points.</p>
+
+    <div class="clue-grid"></div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/clues.js"></script>
+</body>
+</html>
