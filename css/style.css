@@ -506,7 +506,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   /* Carte « verre teinté » (semi-transparente) pour faire ressortir le texte */
   padding: clamp(20px, 4vw, 34px);
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  background: color-mix(in srgb, var(--surface) 32%, transparent);
   border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px) saturate(1.2);
