@@ -609,6 +609,43 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 .donut-legend b { color: var(--ink); font-weight: 600; }
 
 /* =========================================================
+   MASCOTTE 3D flottante
+   ========================================================= */
+.mascot {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  cursor: grab;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--surface) 80%, transparent), transparent);
+  filter: drop-shadow(0 8px 18px rgba(70, 52, 28, 0.28));
+  touch-action: none;
+}
+.mascot:active { cursor: grabbing; }
+.mascot canvas { display: block; }
+.mascot-close {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s ease;
+  z-index: 2;
+}
+.mascot:hover .mascot-close { opacity: 1; }
+@media (max-width: 560px) {
+  .mascot { right: 10px; bottom: 10px; }
+  .mascot-close { opacity: 1; }
+}
+
+/* =========================================================
    Réduaction de mouvement
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
