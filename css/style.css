@@ -193,6 +193,17 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   font-size: 1.02rem;
 }
 
+/* Pages centrées plein écran, comme le décompte (hors dashboard).
+   « safe center » recentre sans rogner le haut quand le contenu déborde. */
+.centered-page {
+  min-height: calc(100vh - 66px);
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  padding-top: clamp(24px, 6vh, 60px);
+  padding-bottom: clamp(24px, 6vh, 60px);
+}
+
 /* =========================================================
    Couche « Nuit étoilée » — tourbillons animés (Van Gogh)
    Cachée par défaut, révélée seulement quand .vangogh est actif.
