@@ -13,6 +13,10 @@ const NL_COL = (5.3 + 180) / 360 * WMAP_COLS;   // ≈ 133.8
 const NL_ROW = (90 - 52.2) / 180 * WMAP_ROWS;   // ≈ 27.3
 const MAP_ZOOM_MAX = 5;                          // zoom au jour J (Europe de l'Ouest, centrée Pays-Bas)
 
+// Point Rotterdam (~4.48°E, 51.92°N) — révélé uniquement le jour J.
+const ROT_COL = (4.48 + 180) / 360 * WMAP_COLS;
+const ROT_ROW = (90 - 51.92) / 180 * WMAP_ROWS;
+
 document.addEventListener('DOMContentLoaded', () => {
   const host = document.querySelector('.worldmap');
   if (!host || typeof WORLD_DOTS === 'undefined') return;
@@ -35,9 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return 0.5 + 0.35 * (f - Math.floor(f));
   }
 
-  function progressNow() {
-    const now = (typeof appNow === 'function') ? appNow() : new Date();
-    return computeProgress(now);
+  function nowDate() {
+    return (typeof appNow === 'function') ? appNow() : new Date();
   }
 
   function draw() {
@@ -49,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.clearRect(0, 0, W, H);
 
     // Progression 0 → 1 : facteur de zoom + centre glissant vers les Pays-Bas.
-    const prog = progressNow();
+    const now = nowDate();
+    const prog = computeProgress(now);
     const zoom = 1 + prog * (MAP_ZOOM_MAX - 1);
     const cell = Math.min(W / cols, H / rows) * zoom;
     const rad = Math.max(0.6, cell * 0.32);
@@ -70,6 +74,27 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.arc(x, y, rad, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(233,124,92,' + alphaFor(c, r).toFixed(2) + ')';
       ctx.fill();
+    }
+
+    // Jour J : un point vert lumineux sur Rotterdam.
+    if (now >= TARGET_DATE) {
+      const rx = ox + (ROT_COL - minC + 0.5) * cell;
+      const ry = oy + (ROT_ROW - minR + 0.5) * cell;
+      const gr = Math.max(rad * 1.6, 5);
+      ctx.save();
+      ctx.shadowColor = 'rgba(74, 222, 128, 0.95)';
+      ctx.shadowBlur = gr * 2.4;
+      ctx.beginPath();
+      ctx.arc(rx, ry, gr, 0, Math.PI * 2);
+      ctx.fillStyle = '#4ade80';
+      ctx.fill();
+      // petit cœur clair pour l'éclat
+      ctx.shadowBlur = 0;
+      ctx.beginPath();
+      ctx.arc(rx - gr * 0.28, ry - gr * 0.28, gr * 0.32, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(220, 255, 230, 0.9)';
+      ctx.fill();
+      ctx.restore();
     }
   }
 
