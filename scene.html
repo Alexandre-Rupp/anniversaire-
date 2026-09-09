@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nous deux</title>
-  <meta name="description" content="Un petit tableau de bord, rien que nous.">
+  <title>Scène de crime</title>
+  <meta name="description" content="Une petite histoire, sur des cartes.">
   <meta name="theme-color" content="#0a0e1f">
   <script>try{if(localStorage.getItem('vg-theme')==='1')document.documentElement.classList.add('vangogh');}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,23 +35,20 @@
     </button>
   </nav>
 
-  <main class="page">
-    <p class="eyebrow">Petit tableau de bord</p>
-    <h1 class="page-title">Nous deux</h1>
-    <p class="page-lede">Quelques chiffres qui ne veulent rien dire pour les autres, et tout dire pour nous.</p>
-
-    <section class="dash-hero">
-      <div class="dash-hero-num">—</div>
-      <div class="dash-hero-label">jours ensemble</div>
-      <div class="dash-hero-sub"></div>
-    </section>
-
-    <div class="dash"></div>
+  <main class="scene-page">
+    <figure class="scene-card">
+      <img src="assets/scene/1.jpg" alt="True Crime — Mais qui a tué ce couillon d’Auguste ?" decoding="async">
+    </figure>
+    <figure class="scene-card">
+      <img src="assets/scene/2.jpg" alt="Les faits" decoding="async" loading="lazy">
+    </figure>
+    <figure class="scene-card">
+      <img src="assets/scene/3.jpg" alt="Les suspects" decoding="async" loading="lazy">
+    </figure>
   </main>
 
   <script src="js/config.js"></script>
   <script src="js/theme.js"></script>
-  <script src="js/dashboard.js"></script>
   <script src="js/mascot.js"></script>
 </body>
 </html>
