@@ -612,9 +612,13 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   color: var(--ink);
   font-size: clamp(1.02rem, 2.6vw, 1.18rem);
   line-height: 1.85;
-  /* Fond transparent : le texte pose directement sur le fond du site. */
+  /* Fond très léger, juste une nuance pour poser le texte. */
   padding: clamp(20px, 4vw, 34px);
-  background: transparent;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .mots-text p { margin: 0 0 1em; }
 .mots-text .mots-sign {
