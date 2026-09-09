@@ -610,7 +610,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   /* Carte « verre teinté » (semi-transparente) pour faire ressortir le texte */
   padding: clamp(20px, 4vw, 34px);
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--surface) 32%, transparent);
+  background: color-mix(in srgb, var(--surface) 16%, transparent);
   border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px) saturate(1.2);
@@ -619,9 +619,10 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 .mots-text p { margin: 0 0 1em; }
 .mots-text .mots-sign {
   margin-top: 1.4em;
-  color: var(--accent);
+  color: var(--ink);
   font-weight: 600;
 }
+.mots-text .sign-name { color: var(--accent); }
 
 /* =========================================================
    CARTE — carte du monde en pointillés
@@ -985,8 +986,12 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 /* =========================================================
    Petits écrans
    ========================================================= */
-@media (max-width: 560px) {
+/* Nav chargée (7 liens) : sous 1000px on masque le libellé de la marque
+   pour laisser la place aux liens (l'icône feuille reste). */
+@media (max-width: 1000px) {
   .brand span.brand-text { display: none; }
+}
+@media (max-width: 560px) {
   .nav { gap: 8px; }
   .nav-links { gap: 2px; }
   .nav-links a { padding: 6px 8px; font-size: .84rem; }
