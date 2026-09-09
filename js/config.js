@@ -8,7 +8,7 @@ const TARGET_DATE = new Date(2026, 9, 20, 0, 0, 0);
 
 // Ancre de départ pour l'évolution visuelle progressive (plus on approche,
 // plus le visuel s'anime). Choisie ~7 semaines avant la cible.
-const PROGRESS_START = new Date(2026, 8, 1, 0, 0, 0); // 1er septembre 2026
+const PROGRESS_START = new Date(2026, 8, 15, 0, 0, 0); // 15 septembre 2026 (1er indice)
 
 // Les 5 indices, débloqués chaque mardi à 00h00 (heure locale).
 // Aucun texte descriptif ici n'est affiché tel quel : le rendu est purement visuel.
