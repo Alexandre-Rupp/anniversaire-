@@ -118,6 +118,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   color: var(--ink);
   letter-spacing: .01em;
   justify-self: start;
+  white-space: nowrap;
 }
 .brand .leaf { width: 22px; height: 22px; color: var(--accent); }
 
@@ -208,6 +209,26 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
   padding-top: clamp(24px, 6vh, 60px);
   padding-bottom: clamp(24px, 6vh, 60px);
 }
+
+/* Scène de crime — cartes empilées, l'une sous l'autre */
+.scene-page {
+  max-width: min(1100px, 96vw);
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 48px) clamp(12px, 3vw, 24px) 80px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vw, 30px);
+  position: relative;
+  z-index: 2;
+}
+.scene-card {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.scene-card img { width: 100%; height: auto; display: block; }
 
 /* =========================================================
    Couche « Nuit étoilée » — tourbillons animés (Van Gogh)

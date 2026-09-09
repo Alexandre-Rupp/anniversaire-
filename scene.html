@@ -3,15 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carte</title>
-  <meta name="description" content="Une carte à explorer.">
+  <title>Scène de crime</title>
+  <meta name="description" content="Une petite histoire, sur des cartes.">
   <meta name="theme-color" content="#0a0e1f">
   <script>try{if(localStorage.getItem('vg-theme')==='1')document.documentElement.classList.add('vangogh');}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/preview.css">
   <link rel="stylesheet" href="css/stars.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232e8b62' d='M5 19c8 0 14-6 14-14 0 0-2-1-6-1C7 4 4 8 4 13c0 2 .5 3.5 1 5 2-4 5-6 9-7-3 2-6 4-9 8z'/%3E%3C/svg%3E">
 </head>
@@ -36,15 +35,20 @@
     </button>
   </nav>
 
-  <main class="worldmap-page">
-    <div class="worldmap" role="img" aria-label="Carte du monde"></div>
+  <main class="scene-page">
+    <figure class="scene-card">
+      <img src="assets/scene/1.jpg" alt="True Crime — Mais qui a tué ce couillon d’Auguste ?" decoding="async">
+    </figure>
+    <figure class="scene-card">
+      <img src="assets/scene/2.jpg" alt="Les faits" decoding="async" loading="lazy">
+    </figure>
+    <figure class="scene-card">
+      <img src="assets/scene/3.jpg" alt="Les suspects" decoding="async" loading="lazy">
+    </figure>
   </main>
 
   <script src="js/config.js"></script>
-  <script src="js/preview.js"></script>
   <script src="js/theme.js"></script>
-  <script src="js/worldmap-data.js"></script>
-  <script src="js/worldmap.js"></script>
   <script src="js/mascot.js"></script>
 </body>
 </html>
