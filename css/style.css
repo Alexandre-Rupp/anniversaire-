@@ -248,8 +248,18 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
     linear-gradient(180deg, #0a1a4c 0%, #143173 46%, #0b1f56 100%);
 }
 :root.vangogh .starry-layer { opacity: 1; }
-/* En Nuit étoilée, le fond d'étoiles « espace » s'efface au profit des tourbillons. */
+/* En Nuit étoilée, le fond d'étoiles « espace » s'efface au profit du tableau. */
 :root.vangogh .stars-bg { opacity: 0; }
+
+/* Fond « Nuit étoilée » : simplement l'image du tableau, en plein écran.
+   Un léger voile sombre garde le texte lisible. */
+:root.vangogh .starry-layer {
+  background:
+    linear-gradient(rgba(7, 15, 42, 0.30), rgba(7, 15, 42, 0.42)),
+    url("../assets/starry-bg.jpg") center center / cover no-repeat;
+}
+/* On masque les tourbillons/lune dessinés en CSS : l'image suffit. */
+:root.vangogh .starry-layer > * { display: none; }
 
 /* Bandes « coups de pinceau » qui ondulent lentement */
 .starry-layer .sky-flow {
