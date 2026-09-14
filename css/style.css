@@ -836,6 +836,12 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 .clue-card .art { width: 78%; height: 78%; }
 .clue-card .art svg { width: 100%; height: 100%; display: block; }
+.clue-card .art img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
 
 /* Indice débloqué : révélation douce (l'unique animation marquante ici) */
 .clue-card.unlocked .art {
