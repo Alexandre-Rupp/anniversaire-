@@ -62,18 +62,8 @@ function bridge() {
 
 // --- Les 5 visuels, dans l'ordre des dates (config.js: CLUES) ---
 const CLUE_ART = {
-  // 1 — Heineken : bouteille verte, capsule dorée, étoile rouge
-  c1: '<svg viewBox="0 0 100 100" aria-hidden="true">' +
-    '<defs><linearGradient id="btl" x1="0" y1="0" x2="1" y2="0">' +
-    '<stop offset="0" stop-color="#1f5a41"/><stop offset="0.5" stop-color="#3fa572"/>' +
-    '<stop offset="1" stop-color="#1f5a41"/></linearGradient></defs>' +
-    '<rect x="42" y="8" width="16" height="9" rx="2" fill="#c9962f"/>' +
-    '<rect x="44" y="16" width="12" height="15" fill="url(#btl)"/>' +
-    '<path d="M44 30 C40 34 34 40 34 52 L34 86 Q34 92 40 92 L60 92 Q66 92 66 86 L66 52 ' +
-    'C66 40 60 34 56 30 Z" fill="url(#btl)"/>' +
-    '<rect x="36" y="57" width="28" height="23" rx="3" fill="#f5f8f3"/>' +
-    '<path fill="#d7534b" d="M50 60 l2.6 5.3 5.8 .8 -4.2 4.1 1 5.8 -5.2 -2.7 -5.2 2.7 ' +
-    '1 -5.8 -4.2 -4.1 5.8 -.8 Z"/></svg>',
+  // 1 — image fournie
+  c1: '<img src="assets/clue1.webp" alt="" decoding="async">',
 
   // 2 — Max Verstappen : monoplace, livrée orange, numéro 1
   c2: '<svg viewBox="0 0 100 100" aria-hidden="true">' +
