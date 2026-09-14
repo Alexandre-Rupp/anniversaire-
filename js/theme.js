@@ -54,6 +54,37 @@ function ensureStarryLayer() {
   document.body.appendChild(layer);
 }
 
+// Menu « burger » : sur mobile, un bouton ouvre/ferme la liste des liens.
+function ensureNavToggle() {
+  const nav = document.querySelector('.nav');
+  const links = document.querySelector('.nav-links');
+  if (!nav || !links || nav.querySelector('.nav-toggle')) return;
+
+  const btn = document.createElement('button');
+  btn.className = 'nav-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  nav.insertBefore(btn, nav.firstChild); // à gauche
+
+  function setOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(!nav.classList.contains('nav-open'));
+  });
+  // Ferme quand on choisit un lien, qu'on clique ailleurs, ou qu'on repasse en grand écran.
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('nav-open') && !nav.contains(e.target)) setOpen(false);
+  });
+  window.addEventListener('resize', () => { if (window.innerWidth > 720) setOpen(false); });
+}
+
 // Marque le lien de navigation correspondant à la page courante.
 function markActiveNav() {
   const here = location.pathname.split('/').pop() || 'index.html';
@@ -77,6 +108,7 @@ function markActiveNav() {
 document.addEventListener('DOMContentLoaded', () => {
   ensureStarsBg();
   ensureStarryLayer();
+  ensureNavToggle();
   markActiveNav();
 
   const btn = document.querySelector('.brush-btn');

@@ -167,6 +167,32 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 .brush-btn:hover { color: var(--accent); transform: translateY(-1px); border-color: var(--accent); }
 .brush-btn svg { width: 19px; height: 19px; }
+
+/* Bouton menu « burger » — visible seulement sur mobile (voir media query) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 40px; height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  justify-self: start;
+}
+.nav-toggle span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--ink-soft);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 :root.vangogh .brush-btn { color: var(--accent); border-color: var(--accent); }
 
 /* =========================================================
@@ -989,15 +1015,44 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.
 }
 
 /* =========================================================
-   Petits écrans
+   Petits écrans — menu burger
    ========================================================= */
-/* Nav chargée (7 liens) : sous 1000px on masque le libellé de la marque
-   pour laisser la place aux liens (l'icône feuille reste). */
-@media (max-width: 1000px) {
-  .brand span.brand-text { display: none; }
-}
-@media (max-width: 560px) {
-  .nav { gap: 8px; }
-  .nav-links { gap: 2px; }
-  .nav-links a { padding: 6px 8px; font-size: .84rem; }
+@media (max-width: 720px) {
+  /* Barre : burger à gauche, pinceau à droite. */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .nav-spacer { display: none; }
+  .nav-toggle { display: flex; }
+
+  /* Les liens deviennent un panneau déroulant sous le header. */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    justify-self: stretch;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    max-width: none;
+    overflow: visible;
+    padding: 10px 14px 16px;
+    background: color-mix(in srgb, var(--surface) 97%, var(--bg));
+    backdrop-filter: saturate(1.4) blur(12px);
+    -webkit-backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    display: none;
+  }
+  .nav.nav-open .nav-links { display: flex; }
+  .nav-links a {
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
 }
