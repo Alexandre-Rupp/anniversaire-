@@ -65,18 +65,8 @@ const CLUE_ART = {
   // 1 — image fournie
   c1: '<img src="assets/clue1.webp" alt="" decoding="async">',
 
-  // 2 — Max Verstappen : monoplace, livrée orange, numéro 1
-  c2: '<svg viewBox="0 0 100 100" aria-hidden="true">' +
-    '<rect x="4" y="44" width="12" height="4" fill="#e08a3c"/>' +
-    '<rect x="6" y="44" width="4" height="19" fill="#0d1526"/>' +
-    '<path d="M8 60 L20 60 C24 52 34 50 46 50 L58 50 C62 45 70 45 76 49 L90 51 ' +
-    'C94 52 94 58 90 60 L82 62 L20 62 Z" fill="#16233f"/>' +
-    '<path d="M40 52 L58 52 L54 58 L36 58 Z" fill="#e08a3c"/>' +
-    '<path d="M50 50 q9 -6 15 -0.5" fill="none" stroke="#0d1526" stroke-width="2.4"/>' +
-    '<rect x="86" y="58" width="11" height="6" rx="1" fill="#0d1526"/>' +
-    '<circle cx="26" cy="64" r="12" fill="#111"/><circle cx="26" cy="64" r="5" fill="#d3d3d3"/>' +
-    '<circle cx="72" cy="64" r="12" fill="#111"/><circle cx="72" cy="64" r="5" fill="#d3d3d3"/>' +
-    '<path fill="#ffffff" d="M47 51 l3 0 0 10 -3 0 0 -7 -2.4 1.4 -1 -2.4 z"/></svg>',
+  // 2 — Saturne (photo)
+  c2: '<img src="assets/clue2.jpg" alt="" decoding="async">',
 
   // 3 — Champ de tulipes
   c3: tulipField(),
