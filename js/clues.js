@@ -68,8 +68,8 @@ const CLUE_ART = {
   // 2 — Saturne (photo)
   c2: '<img src="assets/clue2.jpg" alt="" decoding="async">',
 
-  // 3 — Champ de tulipes
-  c3: tulipField(),
+  // 3 — texte (pas d'image)
+  c3: '<div class="clue-text">T\'es allée chez le médecin ?</div>',
 
   // 4 — « Skeletons » : squelette
   c4: '<svg viewBox="0 0 100 100" aria-hidden="true">' +
